@@ -3,14 +3,14 @@
 @@ -3,6 +3,8 @@
  	url="$1"
  	file="$2"
- 
-+	mac=$(ifconfig en0 | grep HW | awk '{ print "01-" $5 }' | tr ':' '-')
+
++	mac=$(ifconfig eth0 | grep HW | awk '{ print "01-" $5 }' | tr ':' '-')
 +
  	wget404() {
  	# see README.wget404 in the debian-installer-utils udeb source for more info about this
  		if [ "ftp" = "$proto" ] ; then
 @@ -13,7 +15,7 @@
- 
+
  		local RETVAL=$( {
  			echo 1
 -			wget "$@" 2>&1 >&3 && echo %OK%
